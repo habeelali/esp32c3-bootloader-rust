@@ -1,0 +1,27 @@
+# Rust build artifacts
+target/
+tools/sign_image/target/
+
+# Generated binaries and images
+bootloader.bin
+bootloader.elf
+partition-table.bin
+qemu_flash.bin
+test_app*.elf
+test_app*.img
+test_app*_payload.bin
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Secrets — never commit signing keys
+*.pem
+*.der
+private_key*
+signing_key*

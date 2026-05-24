@@ -1,0 +1,28 @@
+[package]
+name = "esp32c3-bootloader"
+version = "0.1.0"
+edition = "2021"
+description = "ESP32-C3 2nd stage bootloader ported to Rust"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+debug = false
+
+[profile.dev]
+opt-level = "z"
+
+[features]
+default = []
+factory_reset = []
+app_test = []
+secure_boot = ["dep:p256"]
+
+[dependencies]
+esp32c3 = "0.22"
+riscv = { version = "0.11", features = ["critical-section-single-hart"] }
+critical-section = "1.1"
+portable-atomic = { version = "1.5", features = ["critical-section"] }
+p256 = { version = "0.13", default-features = false, features = ["ecdsa"], optional = true }
